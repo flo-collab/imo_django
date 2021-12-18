@@ -1,0 +1,16 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block content %}
+
+<h1>green light</h1>
+
+<a href = "{% url 'upload' %}">
+<button action =>
+    Retour à la page d'upload
+</button>
+</a>
+
+<a href ="{% url 'upload' %}">
+Retour à upload
+</a>
+{% endblock %}

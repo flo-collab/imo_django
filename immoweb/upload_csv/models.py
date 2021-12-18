@@ -1,9 +1,11 @@
 from django.db import models
 
+
+
 class Bien(models.Model):
     id = models.fields.IntegerField(primary_key=True)
     id_lot = models.fields.CharField(max_length=100)
-    nb_piece = models.fields.IntegerField()
+    nb_piece = models.fields.FloatField(blank=True,null=True)
     typologie = models.fields.CharField(max_length=100)
     prix_tva_reduite = models.fields.FloatField(blank=True,null=True)
     prix_tva_normale = models.fields.FloatField(blank=True,null=True)

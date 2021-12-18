@@ -1,0 +1,33 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="style.css" />
+<h1>Visualize page</h1>
+<p>
+    Il y a actuellement {{biens|length}} biens immobiliers
+</p>
+
+<table class="table_ville">
+
+    <thead>    
+        <tr>
+            <th>Ville</th>
+            <th>Prix Moyen</th>
+            <th>Ecart type du prix</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ville in villes %}
+        <tr>
+            <td>{{ville.name}}</td>
+            <td>{{ville.avg_price}} €</td>
+            <td>{{ville.std_deviation}} €</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</tabl>
+
+
+
+{% endblock %}

@@ -20,14 +20,11 @@ from . import views
 
 urlpatterns = [
 
+    path('',views.visualize, name = "visualize"),
 
-    path('',views.upload, name='upload'),
-    path('post_csv/',views.post_csv, name = "apres_upload" ),
-
-
-# testing stuff
-    path('succes/',views.upload_succes),
-    path('t/', views.test),
-    path('t_v2/', views.test_v2),
+# # testing stuff
+#     path('succes/',views.upload_succes),
+#     path('t/', views.test),
+#     path('t_v2/', views.test_v2),
 
 ]

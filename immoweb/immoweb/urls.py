@@ -23,7 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
     path('up/', include('upload_csv.urls')),
-
-
+    path('visualize/', include('data_view.urls')),
 
 ]

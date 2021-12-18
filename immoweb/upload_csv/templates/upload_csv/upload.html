@@ -5,7 +5,21 @@
 <h1>
     page upload
 </h1>
+<div>
 
+    <form method="post" action = "{% url 'apres_upload' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="myfile" accept=".csv">
+            <button type="submit">
+                    Upload
+            </button>
+    </form>
+
+    <button type="submit">
+        Delete
+        <a href ="{% url 'apres_upload' %}"> va vers la page couleur </a>
+    </button>
+</div>
 <h2>
     lalala je choisis mon fichier
 </h2>
