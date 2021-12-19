@@ -1,0 +1,11 @@
+{% extends 'main/layout.html' %}
+{% block content %}
+
+<form class="form_login" method = "post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class = button_login type="submit">Log In</button>
+  <!-- <button onclick="window.location.href={% url 'home' %}">Retour</button> -->
+</form>
+
+{% endblock %}

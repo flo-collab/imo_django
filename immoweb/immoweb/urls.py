@@ -24,5 +24,6 @@ urlpatterns = [
     path('', include('main.urls')),
     path('up/', include('upload_csv.urls')),
     path('visualize/', include('data_view.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 
 ]

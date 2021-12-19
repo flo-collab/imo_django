@@ -3,26 +3,23 @@
 {% block content %}
 
 <h1>
-    page upload
+    Telechargez un csv
 </h1>
 <div>
 
-    <form method="post" action = "{% url 'apres_upload' %}" enctype="multipart/form-data">
+    <form class= form_up method="post" action = "{% url 'apres_upload' %}" enctype="multipart/form-data">
         {% csrf_token %}
-        <input type="file" name="myfile" accept=".csv">
-            <button type="submit">
+        <input class=imput_up  type="file" name="myfile" accept=".csv">
+            <button class = button_up type="submit">
                     Upload
             </button>
     </form>
 
-    <button type="submit">
+    <!-- <button type="submit">
         Delete
         <a href ="{% url 'apres_upload' %}"> va vers la page couleur </a>
-    </button>
+    </button> -->
 </div>
-<h2>
-    lalala je choisis mon fichier
-</h2>
 
 
 {% endblock %}

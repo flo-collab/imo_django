@@ -1,9 +1,9 @@
 {% extends 'main/layout.html' %}
 {% load static %}
 {% block content %}
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="{% static 'data_view/style.css' %}" />
 <h1>Visualize page</h1>
-<p>
+<p class = "nb_biens">
     Il y a actuellement {{biens|length}} biens immobiliers
 </p>
 
