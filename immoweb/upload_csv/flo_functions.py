@@ -47,7 +47,7 @@ def val_to_field(bien,r):
     bien.nb_piece = r[2]
     bien.typologie = r[3]
     bien.prix_tva_reduite = r[4]
-    bien.prix_tva_normale = r[5]
+    bien.prix_tva_normale = round(r[5],1)
     bien.prix_HT = r[6]
     bien.prix_m2_HT = r[7]
     bien.prix_m2_TTC = r[8]
@@ -60,7 +60,7 @@ def val_to_field(bien,r):
     bien.parking = r[15]
     bien.nom_programme = r[16]
     bien.ville = r[17]
-    bien.departement = r[18]
+    bien.departement = int(r[18])
     bien.date_fin_programme = r[19]
     bien.adresse_entiere = r[20]
     bien.promoteur = r[21]

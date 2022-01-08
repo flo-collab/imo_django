@@ -21,6 +21,7 @@ from . import views
 urlpatterns = [
 
     path('',views.visualize, name = "visualize"),
+    path('send_mail',views.visualize_send_mail, name = "visualize_send_mail"),
 
 # # testing stuff
 #     path('succes/',views.upload_succes),

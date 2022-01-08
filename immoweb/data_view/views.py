@@ -2,8 +2,13 @@ from django.shortcuts import render
 from django.conf import settings
 from upload_csv.models import Bien
 from data_view.models import Ville
+from data_view.models import Send_mail
+from django.core.mail import send_mail
+
 import os
 import pandas as pd
+import numpy as np
+
 # Create your views here.
 
 def ville_to_db(path):
@@ -20,6 +25,12 @@ def ville_to_db(path):
     print(Ville.objects.count())
     return Ville.objects.all()
 
+def avg_price_and_count(path):
+    df = pd.read_csv(path)
+    df = df[df['balcony']==False]
+    mean_price = round(df['prix_tva_normale'].mean(),1)
+    nb_bien = len(df)
+    return mean_price, nb_bien
 
 
 def visualize(request):
@@ -27,5 +38,26 @@ def visualize(request):
     biens = Bien.objects.all()
     path = settings.MEDIA_ROOT+'\\'+os.listdir(settings.MEDIA_ROOT)[0]
     villes = ville_to_db(path)
-    context = {'biens':biens, 'villes':villes }
+    mean_price, nb_bien = avg_price_and_count(path)
+
+    context = {'biens':biens, 'villes':villes, 'mean_price':mean_price}
+    return render(request,'data_view/visualize_data.html',context)
+
+
+
+
+def visualize_send_mail(request):
+    biens = Bien.objects.all()
+    path = settings.MEDIA_ROOT+'\\'+os.listdir(settings.MEDIA_ROOT)[0]
+    villes = ville_to_db(path)
+    mean_price, nb_bien = avg_price_and_count(path)
+    context = {'biens':biens, 'villes':villes, 'mean_price':mean_price}
+    message = (Send_mail.objects.all()[0].message
+    .replace('{mean_price}',str(mean_price))
+    .replace('{nb_bien}',str(nb_bien)))
+    send_mail(Send_mail.objects.all()[0].sujet,
+                message,
+                settings.EMAIL_HOST_USER,
+                [Send_mail.objects.all()[0].mail_destinataire])
+
     return render(request,'data_view/visualize_data.html',context)
