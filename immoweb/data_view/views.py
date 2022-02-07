@@ -23,7 +23,9 @@ def ville_to_db(path):
         ville.std_deviation= row[2]
         ville.save()
     print(Ville.objects.count())
-    return Ville.objects.all()
+
+    json_ville = df_ville.to_json(orient="values")
+    return Ville.objects.all(), json_ville
 
 def avg_price_and_count(path):
     df = pd.read_csv(path)
@@ -37,8 +39,9 @@ def visualize(request):
     print('page visualize')
     biens = Bien.objects.all()
     path = settings.MEDIA_ROOT+'\\'+os.listdir(settings.MEDIA_ROOT)[0]
-    villes = ville_to_db(path)
+    villes, json_ville = ville_to_db(path)
     mean_price, nb_bien = avg_price_and_count(path)
+    data_json = {'data_villes':json_ville,'nb_biens':nb_bien,'mean_price':mean_price}
 
     context = {'biens':biens, 'villes':villes, 'mean_price':mean_price}
     return render(request,'data_view/visualize_data.html',context)

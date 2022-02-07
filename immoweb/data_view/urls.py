@@ -23,9 +23,6 @@ urlpatterns = [
     path('',views.visualize, name = "visualize"),
     path('send_mail',views.visualize_send_mail, name = "visualize_send_mail"),
 
-# # testing stuff
-#     path('succes/',views.upload_succes),
-#     path('t/', views.test),
-#     path('t_v2/', views.test_v2),
+
 
 ]

@@ -27,7 +27,6 @@ urlpatterns = [
 
 # testing stuff
     path('succes/',views.upload_succes),
-    path('t/', views.test),
-    path('t_v2/', views.test_v2,name="test"),
+
 
 ]
